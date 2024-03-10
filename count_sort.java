@@ -1,30 +1,35 @@
+import java.util.Arrays;
+
 public class count_sort {
     public static void main(String[] args) {
-        int[] arr = {3,1,4,2,3,1,2,0,5};
-        int max = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            if(max <  arr[i]){
-                max = arr[i];
-            }
-        }
+        int[] arr = { 8, 4, 2, 4, 5, 8, 7, 9, 6, 8, 1, 2 };
+        int n = arr.length;
 
-        int[] a = new int[max+1];
+        int count[] = new int[10];
+
         for (int i = 0; i < arr.length; i++) {
-            a[arr[i]] = a[arr[i]]+1;
+            count[arr[i]]++;
         }
 
-        for (int i = 0; i < a.length; i++) {
-            int v = a[i];
-            while(v > 0){
-                System.out.print(i+" ");
-                v--;
-            }
+        // 0 1 2 3 4 5 6 7 8 9
+        // 0 1 2 0 2 1 1 1 3 1
+
+        for (int i = 1; i < count.length; i++) {
+            count[i] = count[i] + count[i - 1];
         }
+        // 0 1 2 0 2 1 1 1 3 1
+        // 0 1 3 3 5 6 7 8 11 12
 
+        int[] result = new int[arr.length];
+        int len = arr.length-1;
+        System.out.println(len );
+        while (len >= 0) {
+            count[arr[len]]--;
+            result[count[arr[len]]] = arr[len];
+            len--;
 
-
-        // System.out.println(Arrays.toString(a));
+        }
+        System.out.println(Arrays.toString(result));
 
     }
-    
 }
