@@ -9,8 +9,7 @@ public class radix_sort {
                 max = arr[i];
             }
         }
-
-        int l = 0;
+        
         for (int i = 1; i < max; i *= 10) {
             count_sort(arr, i);
         }
