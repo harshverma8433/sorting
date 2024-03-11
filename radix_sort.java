@@ -9,8 +9,8 @@ public class radix_sort {
                 max = arr[i];
             }
         }
-        
-        for (int i = 1; i < max; i *= 10) {
+
+        for (int i = 1; i < max; i *= 10) { // 1 10 100 (1000<456)
             count_sort(arr, i);
         }
 
@@ -22,6 +22,9 @@ public class radix_sort {
         int[] count = new int[10];
 
         for (int i = 0; i < arr.length; i++) {
+            // 4 2 7 6 7 (v=1)
+            // 3 1 8 5 0(v=10)
+            // 0 0 0 4 0(v=100)
             int lval = (arr[i] / v) % 10;
             count[lval]++;
         }

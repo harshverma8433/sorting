@@ -22,7 +22,7 @@ public class count_sort {
         int[] result = new int[arr.length];
         int len = arr.length-1;
         while (len >= 0) {
-            count[arr[len]]--;
+            count[arr[len]]--;  
             result[count[arr[len]]] = arr[len];
             len--;
 
